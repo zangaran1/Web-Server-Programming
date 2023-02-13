@@ -1,0 +1,19 @@
+{
+  "name": "web-server-programming",
+  "version": "1.0.0",
+  "description": "This repository is for all in class work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zangaran1/Web-Server-Programming.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zangaran1/Web-Server-Programming/issues"
+  },
+  "homepage": "https://github.com/zangaran1/Web-Server-Programming#readme"
+}
