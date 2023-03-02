@@ -1,5 +1,11 @@
 <script setup lang="ts">
-    const isMenuActive = false;
+    import { ref } from 'vue';
+    const isMenuActive = ref(false);
+
+    function toggleMenu() {
+      isMenuActive.value = !isMenuActive.value;
+      console.log({ isMenuActive });
+    }
 </script>
 <template>
     <nav class="navbar is-primary">
@@ -9,7 +15,7 @@
             <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
             
           </a>
-          <div class="navbar-burger" :class="{ 'is-active': isMenuActive }" @click="isMenuActive = !isMenuActive" >
+          <div class="navbar-burger" :class="{ 'is-active': isMenuActive }" @click="toggleMenu">
             <span></span>
             <span></span>
             <span></span>
@@ -55,6 +61,17 @@
           </div>
       
           <div class="navbar-end">
+            <div class="navbar-item">
+              <a class="button is-primary">
+                <span class="icon">
+                  <i class="fas fa-user"></i>
+                </span> 
+                <strong>Login</strong>
+              </a>
+            </div>
+              
+
+
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
