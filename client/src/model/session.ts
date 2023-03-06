@@ -1,10 +1,13 @@
+/*  B"H
+*/
+
 import { reactive } from "vue";
 
 const session = reactive({
-    user: null as User | null, 
+    user: null as User | null,
 })
 
-interface User{
+interface User {
     id?: number;
     name: string;
     email?: string;
@@ -15,8 +18,9 @@ interface User{
 export function useSession() {
     return session;
 }
+
 export function login() {
     session.user = {
-        name: "Nicholas Zangara";
+        name: "John Doe",
     }
 }
