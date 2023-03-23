@@ -1,19 +1,24 @@
 {
-  "name": "web-server-programming",
+  "name": "web-dev-spring-2023",
   "version": "1.0.0",
-  "description": "This repository is for all in class work.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "",
+  "license": "BSD",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zangaran1/Web-Server-Programming.git"
+    "url": "git+https://github.com/jewpaltz/web-dev-spring-2023.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zangaran1/Web-Server-Programming/issues"
+  "private": true,
+
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js --watch server"
   },
-  "homepage": "https://github.com/zangaran1/Web-Server-Programming#readme"
+
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+
 }

@@ -1,0 +1,12 @@
+###
+GET https://dummyjson.com/products/categories
+
+POST https://dummyjson.com/products/add
+Content-Type: application/json
+    
+    {
+    "name": "string",
+    "description": "string",
+    "price": 0,
+    "category": "string"
+    }
