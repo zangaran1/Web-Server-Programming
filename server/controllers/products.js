@@ -3,47 +3,70 @@ const model = require('../models/products');
 const router = express.Router();
 
 router
-    .get('/', (req, res) => {
-        const list = model.getProducts();
-        res.send(list)
+    .get('/', (req, res, next) => {
+        model.getAll(+req.query.page, +req.query.pageSize)
+            .then(list => {
+                const data = { data: list.items, total: list.total, isSuccess: true };
+                res.send(data)
+            }).catch(next);
     })
 
-    .get('/search/:q', (req, res) => {
-        const term = req.params.q;
-        console.log({ term });
-        const list = model.searchProducts(term);
-        res.send(list);
+    .get('/search/:q', (req, res, next) => {
+
+        model.search(req.params.q, +req.query.page, +req.query.pageSize)
+            .then(list => {
+                const data = { data: list.items, total: list.total, isSuccess: true };
+                res.send(data)
+            }).catch(next);
+        
     })
 
-    .get('/:id', (req, res) => {
-        const id = +req.params.id;
-        const product = model.getProductById(id);
-        res.send(product);
+    .get('/:id', (req, res, next) => {
+
+        model.getById(req.params.id)
+            .then(x => {
+                const data = { data: x, isSuccess: true };
+                res.send(data)
+            }).catch(next);
+
     })
 
-    .post('/', (req, res) => {
-        const product = req.body;
+    .post('/', (req, res, next) => {
 
-        console.log({ product });
-        console.log( req.query );
-        console.log( req.params );
-        console.log( req.headers );
+        model.add(req.body)
+            .then(x => {
+                const data = { data: x, isSuccess: true };
+                res.send(data)
+            }).catch(next);
 
-        model.addProduct(product);
-        res.send(product);
     })
 
-    .patch('/:id', (req, res) => {
-        const product = req.body;
-        model.updateProduct(product);
-        res.send(product);
+    .patch('/', (req, res, next) => {
+
+        model.update(req.body)
+            .then(x => {
+                const data = { data: x, isSuccess: true };
+                res.send(data)
+            }).catch(next);
+
     })
 
-    .delete('/:id', (req, res) => {
-        const id = +req.params.id;
-        model.deleteProduct(id);
-        res.send({id});
+    .delete('/:id', (req, res, next) => {
+
+        model.deleteItem(req.params.id)
+            .then(x => {
+                const data = { data: x, isSuccess: true };
+                res.send(data)
+            }).catch(next);
     })
+
+    .post('/seed', (req, res, next) => {
+        model.seed()
+            .then(x => {
+                const data = { data: x, isSuccess: true };
+                res.send(data)
+            }).catch(next);
+    });
 
 module.exports = router;
 
